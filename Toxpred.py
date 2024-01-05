@@ -33,3 +33,19 @@ test_pred = rf.predict(test_x)
 print(f1_score(test_y,test_pred))
 from sklearn.metrics import roc_auc_score
 print(roc_auc_score(test_y,test_pred))
+
+#from sklearn.pipeline import Pipeline
+#pipe = Pipeline(("RandonForset",rf))
+#pipe.fit(train_x,train_y).score(test_x,test_y)
+
+from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
+parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
+svc = SVC()
+clf = GridSearchCV(svc, parameters)
+clf.fit(train_x,train_y)
+#sorted(clf.cv_results_.keys())
+test_pred = clf.predict(test_x)
+print(f1_score(test_y,test_pred))
+from sklearn.metrics import roc_auc_score
+print(roc_auc_score(test_y,test_pred))
