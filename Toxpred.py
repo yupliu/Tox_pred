@@ -29,10 +29,11 @@ rf = RandomForestClassifier()
 rf.fit(train_x,train_y)
 
 from sklearn.metrics import f1_score
-test_pred = rf.predict(test_x)
-print(f1_score(test_y,test_pred))
+test_pred_rf = rf.predict(test_x)
+print("Randomforest result")
+print(f1_score(test_y,test_pred_rf))
 from sklearn.metrics import roc_auc_score
-print(roc_auc_score(test_y,test_pred))
+print(roc_auc_score(test_y,test_pred_rf))
 
 #from sklearn.pipeline import Pipeline
 #pipe = Pipeline(("RandonForset",rf))
@@ -45,7 +46,16 @@ svc = SVC()
 clf = GridSearchCV(svc, parameters)
 clf.fit(train_x,train_y)
 #sorted(clf.cv_results_.keys())
-test_pred = clf.predict(test_x)
-print(f1_score(test_y,test_pred))
+test_pred_svc = clf.predict(test_x)
+print("SVM result")
+print(f1_score(test_y,test_pred_svc))
 from sklearn.metrics import roc_auc_score
-print(roc_auc_score(test_y,test_pred))
+print(roc_auc_score(test_y,test_pred_svc))
+
+print(np.sum(test_y))
+print(np.sum(test_pred_rf))
+print(np.sum(test_pred_svc))
+print(np.sum(train_y))
+
+import matplotlib.pyplot as plt
+plt.hist(tox["NR-AR"])
