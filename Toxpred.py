@@ -59,3 +59,5 @@ print(np.sum(train_y))
 
 import matplotlib.pyplot as plt
 plt.hist(tox["NR-AR"])
+
+from sklearn.model_selection import cross_validate
