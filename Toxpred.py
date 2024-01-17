@@ -61,3 +61,10 @@ import matplotlib.pyplot as plt
 plt.hist(tox["NR-AR"])
 
 from sklearn.model_selection import cross_validate
+from sklearn.model_selection import cross_val_score
+
+print('SVM cross validation')
+print(cross_val_score(svc,train_x,train_y,cv=5))
+
+print('Random forest cross validation')
+print(cross_val_score(rf,train_x,train_y,cv=5))
